@@ -7,7 +7,29 @@
  const link=(label,url)=>{if(!/^https:\/\//i.test(str(url)))return null;const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label;return a};
  const [home,host,about,social,guest,episodes]=await Promise.all([
   read('/content/homepage.json'),read('/content/host.json'),read('/content/about.json'),read('/content/social.json'),read('/content/guest-enquiry.json'),read('/content/episodes-index.json')]);
- if(home){const title=str(home.title);if(title){const h=document.querySelector('.hero h1');if(h){h.textContent=title}}assign('.hero-script',home.subtitle);assign('.hero-copy > p:nth-of-type(3)',home.description);photo('.hero-media',home.hero_image)}
+ 
+if (home?.website_logo) {
+  const logo = document.getElementById('site-logo');
+  const fallback = document.getElementById('logo-fallback');
+
+  let src = String(home.website_logo).trim();
+
+  if (src.startsWith('public/')) {
+    src = '/' + src.slice(7);
+  } else if (!src.startsWith('/') && !src.startsWith('https://')) {
+    src = '/' + src;
+  }
+
+  if (logo) {
+    logo.onload = () => {
+      logo.hidden = false;
+      if (fallback) fallback.hidden = true;
+    };
+
+    logo.src = src;
+  }
+}
+if(home){const title=str(home.title);if(title){const h=document.querySelector('.hero h1');if(h){h.textContent=title}}assign('.hero-script',home.subtitle);assign('.hero-copy > p:nth-of-type(3)',home.description);photo('.hero-media',home.hero_image)}
  if(host){assign('.host h2',host.name);assign('.host-copy > p:nth-of-type(3)',host.biography);photo('.host-photo',host.portrait)}
  if(about){assign('.about-band h2',about.heading);assign('.about-band .narrow > p:nth-of-type(2)',about.description)}
  if(guest){assign('.guest-band h2',guest.heading);assign('.guest-band .narrow > p:nth-of-type(2)',guest.description);if(str(guest.email))window.CWB_CONTACT_EMAIL=str(guest.email)}
