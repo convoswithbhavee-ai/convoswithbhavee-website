@@ -20,11 +20,10 @@ content:
         label: Homepage Description
         type: text
       - name: hero_image
+        label: Homepage Banner Photo
+        type: image
       - name: website_logo
         label: Website Logo
-        type: image
-
-        label: Homepage Banner Photo
         type: image
 
   - name: episodes
