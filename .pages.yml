@@ -1,0 +1,114 @@
+
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: homepage
+    label: Homepage
+    type: file
+    path: content/homepage.json
+    format: json
+    fields:
+      - name: title
+        label: Main Heading
+        type: string
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: description
+        label: Homepage Description
+        type: text
+      - name: hero_image
+        label: Homepage Banner Photo
+        type: image
+
+  - name: episodes
+    label: Podcast Episodes
+    type: collection
+    path: content/episodes
+    format: json
+    fields:
+      - name: title
+        label: Episode Title
+        type: string
+        required: true
+      - name: guest
+        label: Guest Name
+        type: string
+      - name: profession
+        label: Guest Profession
+        type: string
+      - name: description
+        label: Episode Description
+        type: text
+      - name: thumbnail
+        label: Episode Thumbnail
+        type: image
+      - name: youtube_url
+        label: YouTube Video Link
+        type: string
+      - name: published
+        label: Published
+        type: boolean
+
+  - name: host
+    label: Meet Bhavee
+    type: file
+    path: content/host.json
+    format: json
+    fields:
+      - name: name
+        label: Host Name
+        type: string
+      - name: biography
+        label: About Bhavee
+        type: text
+      - name: portrait
+        label: Host Photograph
+        type: image
+
+  - name: about
+    label: About the Podcast
+    type: file
+    path: content/about.json
+    format: json
+    fields:
+      - name: heading
+        label: Section Heading
+        type: string
+      - name: description
+        label: Podcast Description
+        type: text
+
+  - name: social
+    label: Social Media Links
+    type: file
+    path: content/social.json
+    format: json
+    fields:
+      - name: youtube
+        label: YouTube Channel URL
+        type: string
+      - name: instagram
+        label: Instagram Profile URL
+        type: string
+      - name: linkedin
+        label: LinkedIn Profile URL
+        type: string
+
+  - name: guest_enquiry
+    label: Be a Guest
+    type: file
+    path: content/guest-enquiry.json
+    format: json
+    fields:
+      - name: heading
+        label: Guest Invitation Heading
+        type: string
+      - name: description
+        label: Guest Invitation Text
+        type: text
+      - name: email
+        label: Enquiry Email Address
+        type: string
