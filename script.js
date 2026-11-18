@@ -14,7 +14,7 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   menuButton.setAttribute('aria-label', 'Open navigation');
 }));
 document.querySelector('#year').textContent = String(new Date().getFullYear());
-document.querySelector('#guest-form').addEventListener('submit', event => {
+document.querySelector('#guest-form')?.addEventListener('submit', event => {
   event.preventDefault();
   const name = document.querySelector('#guest-name').value.trim();
   const email = document.querySelector('#guest-email').value.trim();
